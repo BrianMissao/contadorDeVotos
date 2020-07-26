@@ -18,16 +18,16 @@ public class MapeadorDeResultados {
         BufferedReader bufferedReader = new BufferedReader(new FileReader(this.arquivoDeVotos));
         int campoDoNome = 0;
         int campoDaQuantidadeDeVotos = 1;
-        String linhaDoArquivoDeUrnas = bufferedReader.readLine();
-        while (linhaDoArquivoDeUrnas != null) {
-            String[] registroDoCandidato = linhaDoArquivoDeUrnas.split(",");
+        String linhaDoArquivoDeUrnasSendoLida = bufferedReader.readLine();
+        while (linhaDoArquivoDeUrnasSendoLida != null) {
+            String[] registroDoCandidato = linhaDoArquivoDeUrnasSendoLida.split(",");
             if (mapaDeCandidatosENumeroDeVotos.containsKey(registroDoCandidato[campoDoNome])) {
                 Integer quantidadeDeVotosJaComputadaParaEsteCandidato = mapaDeCandidatosENumeroDeVotos.get(registroDoCandidato[campoDoNome]);
                 mapaDeCandidatosENumeroDeVotos.put(registroDoCandidato[campoDoNome], Integer.valueOf(registroDoCandidato[campoDaQuantidadeDeVotos])+quantidadeDeVotosJaComputadaParaEsteCandidato);
             } else {
                 mapaDeCandidatosENumeroDeVotos.put(registroDoCandidato[campoDoNome], Integer.valueOf(registroDoCandidato[campoDaQuantidadeDeVotos]));
             }
-            linhaDoArquivoDeUrnas = bufferedReader.readLine();
+            linhaDoArquivoDeUrnasSendoLida = bufferedReader.readLine();
         }
         return mapaDeCandidatosENumeroDeVotos;
     }
